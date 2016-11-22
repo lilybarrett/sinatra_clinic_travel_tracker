@@ -8,7 +8,13 @@
     <h2>Travel Tracker</h2>
     <h3>Keeping track of where I've been</h3>
 
-    <form action="/destinations" method="post">
+    <ul>
+      <% @traveled_to_list.each do |trip| %>
+        <li><%= trip %></li>
+      <% end %>
+    </ul>
+
+    <form action="/traveled_to_list" method="post">
       <input type="text" id="traveled_to" name="traveled_to">
       <input type="submit">
     </form>
