@@ -31,10 +31,10 @@ end
 
 ```ruby
 # the pry after the redirect will never be hit because the redirect will cause an exit of the block / method
-post '/traveled-to_list' do
-  latest_trip = params[:traveled_to]
+post '/traveled_to_list' do
+  latest_trip = params[:latest_trip]
 
-  File.open('traveled_to.txt', 'a') do |file|
+  File.open('traveled_to_list.txt', 'a') do |file|
     file.puts(latest_trip)
   end
 
@@ -69,13 +69,13 @@ the symbol id becomes the key in our key-value pair of our params hash, so if it
 
 ```ruby
 get '/traveled_to_list/:trip' do
-  @destination = params[:trip]
+  @trip = params[:trip]
   binding.pry
   erb :show
 end
 ```
 
-now going to that same url `http://localhost:4567/destinations/korea`, we still have the same value of this time with a key of “name"
+now going to that same url `http://localhost:4567/destinations/korea`, we still have the same value of this time with a key of “trip"
 
 ![Alt text](<http://i.imgur.com/8Ck7OKI.png>)
 
@@ -88,7 +88,7 @@ now going to that same url `http://localhost:4567/destinations/korea`, we still 
 ```ruby
 # server.rb
 get '/' do
-  @traveled_to_list = File.readlines('traveled_to.txt')
+  @traveled_to_list = File.readlines('traveled_to_list.txt')
 
   erb :index
 end
@@ -104,7 +104,7 @@ end
 # server.rb
 # looks in views folder for index.erb
 get '/' do
-  @traveled_to_list = File.readlines('traveled_to.txt')
+  @traveled_to_list = File.readlines('traveled_to_list.txt')
 
   erb :index
 end
@@ -134,6 +134,6 @@ Debugging
 ```
 checklist -
 [ ]  visiting ‘/traveled_to_list’ should show me an unordered list of all the locations from the txt file, with each location as its own <li> element
-[ ]  as a user I want to be able to add recent trip destinations via a form that should add it to ‘traveled_to.txt’, then it should redirect me to the page I was just on, ‘/traveled_to_list’, so I can see all the previous entries plus the new location I just submitted
+[ ]  as a user I want to be able to add recent trip destinations via a form that should add it to ‘traveled_to_list.txt’, then it should redirect me to the page I was just on, ‘/traveled_to_list’, so I can see all the previous entries plus the new location I just submitted
 [ ]  root should redirect to “/traveled_to_list"
 ```
