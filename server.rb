@@ -6,14 +6,14 @@ get "/" do
 end
 
 get '/traveled_to_list' do
-  @traveled_to_list = File.readlines('traveled_to.txt')
+  @traveled_to_list = File.readlines('traveled_to_list.txt')
 
   erb :index
 end
 
 post "/traveled_to_list" do
-  latest_trip = params[:traveled_to]
-  File.open('traveled_to.txt', 'a') do |file|
+  latest_trip = params[:latest_trip]
+  File.open('traveled_to_list.txt', 'a') do |file|
     file.puts(latest_trip)
   end
 
