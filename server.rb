@@ -1,4 +1,4 @@
-require 'sinatra'
+require 'Sinatra'
 require 'pry'
 
 get "/" do
@@ -12,10 +12,8 @@ get '/traveled_to_list' do
 end
 
 post "/traveled_to_list" do
-  latest_trip = params[:latest_trip]
+  latest_trip = params[:trip]
   File.open('traveled_to_list.txt', 'a') do |file|
     file.puts(latest_trip)
   end
-
-  redirect "/traveled_to_list"
 end
