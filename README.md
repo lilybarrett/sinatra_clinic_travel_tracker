@@ -16,26 +16,26 @@
 ```ruby
 require 'sinatra'
 
-get '/destinations' do
+get '/traveled_to_list' do
   # triggered via GET
 end
 
-post '/destinations' do
+post '/traveled_to_list' do
   # triggered via POST, such as the submission of a form with action 'POST'
 end
 ```
 
 * just as Ruby methods only have one return value, and once returned jumps out of the method even if there are more lines of code in the block, Sinatra can only have one return, for example redirecting to a different route
-* if the situation calls for it you can use conditionals to redirect / render things based on conditions 
+* if the situation calls for it you can use conditionals to redirect / render things based on conditions
 
 
 ```ruby
 # the pry after the redirect will never be hit because the redirect will cause an exit of the block / method
-post '/destinations' do
-  destination = params[:destination]
+post '/traveled-to_list' do
+  latest_trip = params[:traveled_to]
 
-  File.open('destination.txt', 'a') do |file|
-    file.puts(destination)
+  File.open('traveled_to.txt', 'a') do |file|
+    file.puts(latest_trip)
   end
 
   redirect '/'
@@ -56,8 +56,8 @@ end
 * for queries it would be defined in your url of your route in the server file
 
 ```ruby
-get '/destinations/:country' do
-  @destination = params[:name]
+get '/traveled_to_list/:trip' do
+  @trip = params[:trip]
   binding.pry
   erb :show
 end
@@ -68,8 +68,8 @@ end
 the symbol id becomes the key in our key-value pair of our params hash, so if it was defined as
 
 ```ruby
-get '/destinations/:name' do
-  @destination = params[:name]
+get '/traveled_to_list/:trip' do
+  @destination = params[:trip]
   binding.pry
   erb :show
 end
@@ -88,7 +88,7 @@ now going to that same url `http://localhost:4567/destinations/korea`, we still 
 ```ruby
 # server.rb
 get '/' do
-  @destinations = File.readlines('destinations.txt')
+  @traveled_to_list = File.readlines('traveled_to.txt')
 
   erb :index
 end
@@ -104,7 +104,7 @@ end
 # server.rb
 # looks in views folder for index.erb
 get '/' do
-  @destinations = File.readlines('destinations.txt')
+  @traveled_to_list = File.readlines('traveled_to.txt')
 
   erb :index
 end
@@ -113,7 +113,7 @@ end
 * if your template is in a subfolder, for example if you follow a pattern to have a folder for each model so each subfolder can have its own index.erb, you need to convert the string path to a symbol such as
 
 ```ruby
-erb :'destinations/index'
+erb :'traveled_to_list/index'
 ```
 
 ---
@@ -130,10 +130,10 @@ Debugging
 * erb is just embedded ruby, you can use pry simply by throwing `<% binding.pry %>` into your erb file!
 
 ---
-### Destination Bucket List
+### Travel Tracker
 ```
 checklist -
-[ ]  visiting ‘/destinations’ should show me an unordered list of all the desti˜nations from the txt file with each destination as its own <li>
-[ ]  as a user I want to be able to add destinations via a form that should add it to ‘destinations.txt’, then it should redirect me to the page I was just on, ‘/destinations’, so I can see all the previous entries plus the new destination I just submitted
-[ ]  root should redirect to “/destinations"
+[ ]  visiting ‘/traveled_to_list’ should show me an unordered list of all the locations from the txt file, with each location as its own <li> element
+[ ]  as a user I want to be able to add recent trip destinations via a form that should add it to ‘traveled_to.txt’, then it should redirect me to the page I was just on, ‘/traveled_to_list’, so I can see all the previous entries plus the new location I just submitted
+[ ]  root should redirect to “/traveled_to_list"
 ```
