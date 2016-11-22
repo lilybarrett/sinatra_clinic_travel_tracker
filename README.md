@@ -48,9 +48,7 @@ end
 ### Params
 
 * the params hash stores stores query string and form data, this is how we pass data from our client to the server
-* a hash is just made up of key-value pairs, what determines the keys?
-
-* YOU (obvi, as Dani would say)
+* a hash is just made up of key-value pairs, what determines the keys? (You!)
 
 * in forms, this is the ‘name’ part of your form input
 * for queries it would be defined in your url of your route in the server file
@@ -75,7 +73,7 @@ get '/traveled_to_list/:trip' do
 end
 ```
 
-now going to that same url `http://localhost:4567/destinations/korea`, we still have the same value of this time with a key of “trip"
+now going to that same url `http://localhost:4567/traveled_to_list/korea`, we still have the same value of this time with a key of “trip"
 
 ![Alt text](<http://i.imgur.com/8Ck7OKI.png>)
 
