@@ -7,7 +7,7 @@ end
 
 get '/traveled_to_list' do
   @traveled_to_list = File.readlines('traveled_to_list.txt')
-
+  # test comment 
   erb :index
 end
 
