@@ -5,6 +5,8 @@
 your_question == shared_by_10_other_launchers
 ```
 
+![alt text](https://imgs.xkcd.com/comics/wisdom_of_the_ancients.png)
+
 ### What is Sinatra?
 
 * Sinatra is a free and open-source lightweight web application framework
