@@ -61,8 +61,6 @@ get '/traveled_to_list/:trip' do
 end
 ```
 
-![Alt text](http://i.imgur.com/KY3Izqb.png)
-
 the symbol id at the end of the path becomes the key in our key-value pair of our params hash, so if it was defined as
 
 ```ruby
@@ -74,8 +72,6 @@ end
 ```
 
 now going to that same url `http://localhost:4567/traveled_to_list/korea`, we still have the same value, but with a key of “this_is_a_random_key": `{this_is_a_random_key: "korea"}`
-
-![Alt text](<http://i.imgur.com/8Ck7OKI.png>)
 
 ---
 
