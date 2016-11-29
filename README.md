@@ -1,15 +1,15 @@
 ### What is Sinatra?
 
 * Sinatra is a free and open-source lightweight web application framework
-* Unlike other ruby frameworks (such as Rails), Sinatra emphasizes a minimalistic approach to development, only offering what is essential to handle HTTP requests and deliver responses to clients (your browser)
-* It is ideal for teaching HTTP since its syntax in defining endpoints use HTTP verbs in the pattern `verb ‘route’ do`
+* unlike other Ruby frameworks (such as Rails), Sinatra emphasizes a minimalistic approach to development, only offering what is essential to handle HTTP requests and deliver responses to clients (your browser)
+* it is ideal for learning HTTP since its syntax in defining endpoints use HTTP verbs in the pattern `verb ‘route’ do`
 
 ---
 
 ### Routes
 
-* Routes can essentially be seen as methods in ruby of a specific syntax
-* To declare a route you supply the HTTP verb to respond to, the URL, and a block you want executed if someone travels to / hits that route
+* routes can essentially be seen as methods in Ruby of a specific syntax
+* to declare a route you supply the HTTP verb to respond to, the URL, and a block you want executed if someone travels to / hits that route
 
 * for example many routes may have the same URL, but they can be triggered / called based on the type of HTTP verb
 
@@ -48,7 +48,7 @@ end
 ### Params
 
 * the params hash stores stores query string and form data, this is how we pass data from our client to the server
-* a hash is just made up of key-value pairs, what determines the keys? (You!)
+* a hash is just made up of key-value pairs, what determines the keys? (you do!)
 
 * in forms, this is the ‘name’ part of your form input
 * for queries it would be defined in your url of your route in the server file
@@ -63,17 +63,17 @@ end
 
 ![Alt text](http://i.imgur.com/KY3Izqb.png)
 
-the symbol id becomes the key in our key-value pair of our params hash, so if it was defined as
+the symbol id at the end of the path becomes the key in our key-value pair of our params hash, so if it was defined as
 
 ```ruby
 get '/traveled_to_list/:trip' do
-  @trip = params[:trip]
+  @trip = params[:this_is_a_random_key]
   binding.pry
   erb :show
 end
 ```
 
-now going to that same url `http://localhost:4567/traveled_to_list/korea`, we still have the same value of this time with a key of “trip"
+now going to that same url `http://localhost:4567/traveled_to_list/korea`, we still have the same value, but with a key of “this_is_a_random_key": `{this_is_a_random_key: "korea"}`
 
 ![Alt text](<http://i.imgur.com/8Ck7OKI.png>)
 
