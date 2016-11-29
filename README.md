@@ -103,7 +103,7 @@ end
 
 ### Views
 
-* Sinatra will default to look in your views folder
+* Sinatra, based on the assumptions that inform its framework, will default to look in your views folder
 
 ```ruby
 # server.rb
@@ -115,7 +115,8 @@ get '/' do
 end
 ```
 
-* if your template is in a subfolder, for example if you follow a pattern to have a folder for each model so each subfolder can have its own index.erb, you need to convert the string path to a symbol such as
+* What if you want more than one `index.erb` file per model? (list of destinations traveled to, list of dream future destinations, etc.)
+* You need to convert the string path to a symbol such as
 
 ```ruby
 erb :'traveled_to_list/index'
