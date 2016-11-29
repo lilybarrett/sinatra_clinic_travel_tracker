@@ -3,6 +3,7 @@ require 'pry'
 
 get "/" do
   redirect "/traveled_to_list"
+  #test comment
 end
 
 get '/traveled_to_list' do
